@@ -60,7 +60,6 @@ class TreeFinder
      */
     private function coincidence($left, $right)
     {
-        echo "Ejecutando coincidencias entre ({$left}, {$right})\n";
         return call_user_func($this->closure, $left, $right);
     }
 
