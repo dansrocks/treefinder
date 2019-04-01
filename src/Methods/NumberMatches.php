@@ -2,8 +2,8 @@
 
 namespace TreeFinder\Methods;
 
-use TreeFinder\IMatchMethod;
-use TreeFinder\ITreeLeaf;
+use TreeFinder\Interfaces\IMatchMethod;
+use TreeFinder\Interfaces\ITreeLeaf;
 
 /**
  * Class NumberMatches
