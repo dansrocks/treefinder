@@ -9,8 +9,8 @@ namespace TreeFinder;
  */
 class TreeFinder
 {
-    /** @var \Closure */
-    private $closure = null;
+    /** @var IMatchMethod */
+    private $matchMethod = null;
 
     /** @var int */
     private $threshold = null;
@@ -23,12 +23,12 @@ class TreeFinder
     /**
      * TreeFinder constructor.
      *
-     * @param \Closure $closure
+     * @param IMatchMethod $method
      * @param int $threshold
      */
-    public function __construct(\Closure $closure, int $threshold)
+    public function __construct(IMatchMethod $method, int $threshold)
     {
-        $this->closure = $closure;
+        $this->matchMethod = $method;
         $this->threshold = $threshold;
     }
 
@@ -43,24 +43,13 @@ class TreeFinder
         $threshold = $this->getThreshold();
         foreach ($left as $leftKey => $leftItem) {
             foreach ($right as $rightKey => $rightItem) {
-                $coincidence = $this->coincidence($leftItem, $rightItem);
+                $coincidence = $this->matchMethod->coincidence($leftItem, $rightItem);
                 if ($coincidence >= $threshold) {
                     $this->appendCoincidence($leftKey, $rightKey, $coincidence, $leftItem, $rightItem);
                 }
             }
         }
         return $this->coincidences;
-    }
-
-    /**
-     * @param $left
-     * @param $right
-     *
-     * @return mixed
-     */
-    private function coincidence($left, $right)
-    {
-        return call_user_func($this->closure, $left, $right);
     }
 
     /**
