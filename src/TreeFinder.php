@@ -2,6 +2,8 @@
 
 namespace TreeFinder;
 
+use TreeFinder\Interfaces\IMatchMethod;
+
 /**
  * Class TreeFinder
  *

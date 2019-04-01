@@ -1,6 +1,6 @@
 <?php
 
-namespace TreeFinder;
+namespace TreeFinder\Interfaces;
 
 /**
  * Interface IMatchMethod
